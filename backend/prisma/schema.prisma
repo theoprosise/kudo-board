@@ -23,7 +23,7 @@ model Board {
   owner     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Card     Card[]
+  Card     Card[]    @relation("BoardToCard")
 }
 
 model Card {
@@ -35,8 +35,8 @@ model Card {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   board_id   Int
-  board      Board    @relation(fields: [board_id], references: [board_id])
-  comment    Comment[] 
+  board      Board     @relation("BoardToCard", fields: [board_id], references: [board_id], onDelete: Cascade)
+  comment    Comment[] @relation("CardToComment")
   pinned      Boolean @default(false)
   pinnedAt DateTime?
 }
@@ -46,6 +46,6 @@ model Comment {
   message   String
   author    String?
   cardId    Int
-  card      Card    @relation(fields: [cardId], references: [card_id])
+  card      Card   @relation("CardToComment", fields: [cardId], references: [card_id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
