@@ -1,7 +1,7 @@
 // components/GifFetcher.jsx
 import React, { useState } from "react";
 
-const API_KEY = "YOUR_GIPHY_API_KEY";
+const API_KEY = "NeKmhNXPtS6sfIDicPUs0uadQB6tdfrs";
 
 export default function GifFetcher({ selected, onSelect }) {
   const [query, setQuery] = useState("");
@@ -12,7 +12,7 @@ export default function GifFetcher({ selected, onSelect }) {
     const res = await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${encodeURIComponent(
         query
-      )}&limit=1`
+      )}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
     );
     const { data } = await res.json();
     setResults(data.map((g) => g.images.fixed_height.url));
@@ -26,7 +26,7 @@ export default function GifFetcher({ selected, onSelect }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for GIF"
         />
-        <button type="button">Search</button>
+        <button type="button" onClick={search}>Search</button>
       </div>
       <div className="grid gif-results">
         {results.map((url) => (

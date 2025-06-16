@@ -23,7 +23,7 @@ export default function CommentModal({
     
       const submit = async e =>{
         e.preventDefault();
-        await createComment(boardId, card.card, {
+        await createComment(boardId, card.card_id, {
             message: body, author
         });
         setBody('');

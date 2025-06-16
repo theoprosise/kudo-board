@@ -29,7 +29,6 @@ export default function NewBoardForm({ onCreate }) {
         <option value="Inspiration">Inspiration</option>
       </select>
       <input
-        required
         placeholder="Author (Optional)"
         value={owner}
         onChange={(e) => setOwner(e.target.value)}

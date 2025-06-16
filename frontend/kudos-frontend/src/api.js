@@ -3,7 +3,7 @@ const BASEURL = "http://localhost:3000";
 export async function fetchBoards({ category, search } = {}) {
   const params = new URLSearchParams();
   if (category && category !== "All") params.append("category", category);
-  if (search) params.append("saerch", search);
+  if (search) params.append("search", search);
   const res = await fetch(`${BASEURL}/boards?${params}`);
   return res.json();
 }
@@ -75,12 +75,12 @@ export async function fetchComments(boardId, cardId) {
   return res.json();
 }
 
-export async function createComment(boardId, cardId) {
+export async function createComment(boardId, cardId, commentData) {
   return fetch(`${BASEURL}/boards/${boardId}/cards/${cardId}/comments`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(cardData),
+    body: JSON.stringify(commentData),
   }).then((r) => r.json());
 }
