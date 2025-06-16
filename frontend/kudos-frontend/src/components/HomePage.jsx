@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import CategoryFilter from "./CategoryFilter";
 import BoardGrid from "./BoardGrid";
 import NewBoardForm from "./NewBoardForm";
+import "./HomePage.css"
 
 const categories = ["All", "Celebration", "Thank You", "Inspiration"];
 

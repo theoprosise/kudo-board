@@ -1,6 +1,6 @@
 // components/NewBoardForm.jsx
 import React, { use, useState } from "react";
-
+import "./NewBoardForm.css"
 export default function NewBoardForm({ onCreate }) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -16,7 +16,6 @@ export default function NewBoardForm({ onCreate }) {
 
   return (
     <form onSubmit={submit} className="new-board-form">
-      <h2>Create New Board</h2>
       <input
         required
         placeholder="Board title"

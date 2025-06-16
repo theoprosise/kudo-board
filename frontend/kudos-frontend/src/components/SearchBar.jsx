@@ -1,5 +1,6 @@
 // components/SearchBar.jsx
 import React, { useState } from "react";
+import "./SearchBar.css"
 
 export default function SearchBar({ onSearch }) {
   const [q, setQ] = useState("");
@@ -11,7 +12,7 @@ export default function SearchBar({ onSearch }) {
     setQ(""), onSearch("");
   };
   return (
-    <form onSubmit={submit}>
+    <form className="search-form" onSubmit={submit}>
       <input
         value={q}
         onChange={(e) => setQ(e.target.value)}
