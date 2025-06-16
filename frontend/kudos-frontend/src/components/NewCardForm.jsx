@@ -1,7 +1,7 @@
 // components/NewCardForm.jsx
 import React, { useState } from "react";
 import GifPicker from "./GifPicker";
-
+import "./NewCardForm.css"
 export default function NewCardForm({ onCreate }) {
   const [message, setMessage] = useState("");
   const [gif, setGif] = useState("");

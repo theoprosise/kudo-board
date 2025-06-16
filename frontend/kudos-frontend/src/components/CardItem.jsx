@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CommentModal from "./CommentModal";
-
+import "./CardItem.css"
 export default function CardItem({
   card,
   onUpvote,
@@ -12,7 +12,8 @@ export default function CardItem({
 
   return (
     <div className={`card ${card.pinned ? "pinned" : ""}`}>
-      <img src={card.gif} alt="gif for card" />
+      <div className="card-content-not-pin">
+      <img className="card-gif" src={card.gif} alt="gif for card" />
       <p>{card.message}</p>
       <div className="card-actions">
         <button onClick={onUpvote}>Upvote {card.votes}</button>
@@ -28,6 +29,7 @@ export default function CardItem({
           onCommentAdded={onCommentAdded}
         />
       )}
+      </div>
     </div>
   );
 }

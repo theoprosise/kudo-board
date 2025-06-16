@@ -1,7 +1,7 @@
 // components/GifFetcher.jsx
 import React, { useState } from "react";
 
-const API_KEY = "NeKmhNXPtS6sfIDicPUs0uadQB6tdfrs";
+const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY_GIF;
 
 export default function GifFetcher({ selected, onSelect }) {
   const [query, setQuery] = useState("");
@@ -12,7 +12,7 @@ export default function GifFetcher({ selected, onSelect }) {
     const res = await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${encodeURIComponent(
         query
-      )}&limit=1&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
+      )}&limit=2&offset=0&rating=g&lang=en&bundle=messaging_non_clips`
     );
     const { data } = await res.json();
     setResults(data.map((g) => g.images.fixed_height.url));
