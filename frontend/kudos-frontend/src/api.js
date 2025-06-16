@@ -1,10 +1,10 @@
 const BASEURL = "http://localhost:3000";
 
 export async function fetchBoards({ category, search } = {}) {
-  const params = newURLSearchParams();
+  const params = new URLSearchParams();
   if (category && category !== "All") params.append("category", category);
   if (search) params.append("saerch", search);
-  const res = await fetch(`${BASE}/boards?${params}`);
+  const res = await fetch(`${BASEURL}/boards?${params}`);
   return res.json();
 }
 

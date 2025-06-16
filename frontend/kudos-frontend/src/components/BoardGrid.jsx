@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 export default function BoardGrid({ boards, onDelete }) {
   return (
-    <div className="grid-boards">
+    <div className="grid boards">
       {boards.map((b) => (
         <div key={b.board_id} className="card board-card">
           <Link to={`/boards/${b.board_id}`}>
             <img
-              src={b.gif || "https://via.placeholder.com/150"}
+              src={b.gif || "https://picsum.photos/150"}
               alt="Board image"
             />
             <h3>{b.title}</h3>

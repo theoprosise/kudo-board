@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 exports.getBoards = async (req, res) => {
   const { category, search } = req.query;
   const where = {
-    ...category(category && { category }),
+    ...(category && { category }),
     title: { contains: search || "", mode: "insensitive" },
   };
   const findOpts =
@@ -24,6 +24,7 @@ exports.getBoardById = async (req, res) => {
     include: { Card: true },
   });
   if (!board) return res.status(404).json({ error: "Not Found" });
+  res.json(board);
 };
 
 exports.createBoard = async (req, res) => {

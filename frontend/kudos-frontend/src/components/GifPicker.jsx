@@ -20,24 +20,24 @@ export default function GifFetcher({ selected, onSelect }) {
 
   return (
     <div className="gif-picker">
-      <form onSubmit={search}>
+      <div className="gif-search">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for GIF"
         />
-        <button type="submit">Search</button>
-      </form>
+        <button type="button">Search</button>
+      </div>
       <div className="grid gif-results">
-        {results.map((url) => {
+        {results.map((url) => (
           <img
             key={url}
             src={url}
             className={url === selected ? "selected" : ""}
             onClick={() => onSelect(url)}
             alt="Gifs for search"
-          />;
-        })}
+          />
+        ))}
       </div>
     </div>
   );

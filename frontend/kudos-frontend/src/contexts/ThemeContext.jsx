@@ -9,7 +9,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const stored = localStorage.getItem("darkMode") === "true";
     setDarkMode(stored);
-  });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
