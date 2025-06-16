@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "./CommentModal.css"
 import{
     fetchComments,
     createComment,
@@ -47,7 +48,7 @@ export default function CommentModal({
                     ))}
                 </div>
                 <form onSubmit={submit} className="new-comment-form">
-                    <textarea required placeholder="Add comment here" value={body} onChange={e => setBody(e.target.value)} />
+                    <input required placeholder="Add comment here" value={body} onChange={e => setBody(e.target.value)} />
                         <input placeholder="Author (optional)" value={author} onChange={e => setAuthor(e.target.value)} />
                         <button type="submit">Post Comment</button>
                 </form>

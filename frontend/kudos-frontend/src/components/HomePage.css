@@ -1,3 +1,8 @@
 .banner {
   text-align: center;
 }
+.open-create-new-board {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

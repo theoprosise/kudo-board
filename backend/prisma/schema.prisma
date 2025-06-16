@@ -36,7 +36,7 @@ model Card {
   updatedAt  DateTime @updatedAt
   board_id   Int
   board      Board    @relation(fields: [board_id], references: [board_id])
-  comment    Comment[]
+  comment    Comment[] 
   pinned      Boolean @default(false)
   pinnedAt DateTime?
 }

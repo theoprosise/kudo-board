@@ -30,10 +30,15 @@
   cursor: pointer;
 }
 
+.comments-list {
+  padding: 10px;
+  list-style: none;
+}
 
-.new-board-form {
+.comment {
+  border-bottom: 1px solid var(--text);
+}
+
+.new-comment-form {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }

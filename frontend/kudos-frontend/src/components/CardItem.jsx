@@ -18,7 +18,7 @@ export default function CardItem({
       <div className="card-actions">
         <button onClick={onUpvote}>Upvote {card.votes}</button>
         <button onClick={onPin}>{card.pinned ? "Pinned" : "Not pinned"}</button>
-        <button onClick={onDelete}>Delete</button>
+        <button onClick={onDelete}>🗑️</button>
         <button onClick={() => setOpen(true)}>Comments</button>
       </div>
       {open && (

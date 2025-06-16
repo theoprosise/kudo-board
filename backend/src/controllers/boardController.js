@@ -40,6 +40,9 @@ exports.createBoard = async (req, res) => {
 
 exports.deleteBoard = async (req, res) => {
   const id = Number(req.params.id);
-  await prisma.board.delete({ where: { board_id: id } });
+  await prisma.board.delete({
+    where: { board_id: id },
+    include: { Card: { include: { comment: true } } },
+  });
   res.status(204).end();
 };

@@ -2,11 +2,14 @@
   --bg: #fff;
   --text: #111;
   --card-bg: #f9f9f9;
+  --modal-bg: darkgrey;
 }
 [data-theme="dark"]{
-  --bg: #121212;
+  --bg: #222831;
   --text: #eee;
-  --card-bg: #1e1e1e;
+  --card-bg: #948979;
+  --modal-bg: #393E46;
+
 }
 
 body{

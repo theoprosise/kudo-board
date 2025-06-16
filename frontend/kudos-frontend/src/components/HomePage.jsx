@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import CategoryFilter from "./CategoryFilter";
 import BoardGrid from "./BoardGrid";
 import NewBoardForm from "./NewBoardForm";
-import "./HomePage.css"
+import "./HomePage.css";
 
 const categories = ["All", "Celebration", "Thank You", "Inspiration"];
 
@@ -14,6 +14,7 @@ export default function HomePage() {
   const [boards, setBoards] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [open, setOpenNew] = useState(false);
 
   const load = async () => {
     const data = await fetchBoards({ category, search });
@@ -37,8 +38,8 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main>
-       <section className="banner">Board Gallery Section</section>
+      <main className="main-content">
+        <section className="banner">Board Gallery Section</section>
 
         <SearchBar onSearch={setSearch} />
         <CategoryFilter
@@ -46,8 +47,14 @@ export default function HomePage() {
           categories={categories}
           onChange={setCategory}
         />
+        <button className="open-create-new-board" onClick={() => setOpenNew(true)}>Create New Board</button>
+        {open && (
+          <NewBoardForm
+            onCreate={handleCreate}
+            onClose={() => setOpenNew(false)}
+          />
+        )}
 
-        <NewBoardForm onCreate={handleCreate} />
         <BoardGrid boards={boards} onDelete={handleDelete} />
       </main>
       <Footer />
