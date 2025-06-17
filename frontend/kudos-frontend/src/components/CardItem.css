@@ -1,8 +1,14 @@
 .card-gif {
-  width: 80%;
-  height: auto;
+  width: 100%; 
+  max-width: 400px; 
+  aspect-ratio: 4 / 3; 
+  overflow: hidden;
+  position: relative;
 }
 
-.card-content-not-pin {
-  
+.gif-container {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
 }

@@ -1,0 +1,7 @@
+.board-image {
+  max-width: 300px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

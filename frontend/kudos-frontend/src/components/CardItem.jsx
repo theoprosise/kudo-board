@@ -13,7 +13,10 @@ export default function CardItem({
   return (
     <div className={`card ${card.pinned ? "pinned" : ""}`}>
       <div className="card-content-not-pin">
-      <img className="card-gif" src={card.gif} alt="gif for card" />
+        <div className="gif-container">
+        <img className="card-gif" src={card.gif} alt="gif for card" />
+        </div>
+
       <p>{card.message}</p>
       <div className="card-actions">
         <button onClick={onUpvote}>Upvote {card.votes}</button>
