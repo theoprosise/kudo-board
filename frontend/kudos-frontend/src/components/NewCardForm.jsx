@@ -1,7 +1,7 @@
 // components/NewCardForm.jsx
 import React, { useState } from "react";
 import GifPicker from "./GifPicker";
-import "./NewCardForm.css"
+
 export default function NewCardForm({ onCreate, onClose }) {
   const [message, setMessage] = useState("");
   const [gif, setGif] = useState("");
@@ -32,7 +32,9 @@ export default function NewCardForm({ onCreate, onClose }) {
       <button type="submit" disabled={!gif}>
         Create Card
       </button>
-      <button className="close" onClick={onClose}>CLOSE</button>
+      <button className="close" onClick={onClose}>
+        CLOSE
+      </button>
     </form>
   );
 }
