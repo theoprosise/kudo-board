@@ -17,7 +17,9 @@ export default function NewBoardForm({ onCreate, onClose }) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <button className="close" onClick={onClose}>Close</button>
+        <button className="close" onClick={onClose}>
+          CLOSE
+        </button>
         <form onSubmit={submit} className="new-board-form">
           <input
             required

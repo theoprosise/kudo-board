@@ -11,10 +11,12 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CardGrid from "./CardGrid";
 import NewCardForm from "./NewCardForm";
+import "./BoardPage.css"
 
 export default function BoardPage() {
   const { boardId } = useParams();
   const [cards, setCards] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   const load = async () => {
     const data = await fetchCards(boardId);
@@ -40,7 +42,7 @@ export default function BoardPage() {
     },
 
     commentAdded: async () => {
-      load(); 
+      load();
     },
 
     addCard: async (cardData) => {
@@ -52,8 +54,18 @@ export default function BoardPage() {
   return (
     <>
       <Header />
+      <button onClick={() => setOpenModal(true)}>Create New</button>
       <main>
-        <NewCardForm onCreate={handlers.addCard} />
+        {openModal && (
+          <div className="modal-backdrop">
+            <div className="modal">
+              <NewCardForm
+                onCreate={handlers.addCard}
+                onClose={() => setOpenModal(false)}
+              />
+            </div>
+          </div>
+        )}
         <CardGrid cards={cards} {...handlers} />
       </main>
       <Footer />

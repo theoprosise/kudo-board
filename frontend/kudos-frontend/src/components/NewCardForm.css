@@ -1,7 +1,0 @@
-.new-card-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border: solid var(--text) 2px;
-}

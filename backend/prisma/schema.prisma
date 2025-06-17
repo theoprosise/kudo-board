@@ -14,38 +14,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model Board {
-  board_id  Int     @id @default(autoincrement())
+  board_id  Int      @id @default(autoincrement())
   title     String
   category  String
   owner     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Card     Card[]    @relation("BoardToCard")
+  Card      Card[]   @relation("BoardToCard")
 }
 
 model Card {
-  card_id    Int     @id @default(autoincrement())
-  message String
-  gif        String
-  owner      String?
-  votes      Int     @default(0)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  board_id   Int
-  board      Board     @relation("BoardToCard", fields: [board_id], references: [board_id], onDelete: Cascade)
-  comment    Comment[] @relation("CardToComment")
-  pinned      Boolean @default(false)
-  pinnedAt DateTime?
+  card_id   Int       @id @default(autoincrement())
+  message   String
+  gif       String
+  owner     String?
+  votes     Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  board_id  Int
+  board     Board     @relation("BoardToCard", fields: [board_id], references: [board_id], onDelete: Cascade)
+  comment   Comment[] @relation("CardToComment")
+  pinned    Boolean   @default(false)
+  pinnedAt  DateTime?
 }
 
 model Comment {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   message   String
   author    String?
   cardId    Int
-  card      Card   @relation("CardToComment", fields: [cardId], references: [card_id], onDelete: Cascade)
+  card      Card     @relation("CardToComment", fields: [cardId], references: [card_id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
