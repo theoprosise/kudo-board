@@ -1,14 +1,27 @@
 const BASEURL = import.meta.env.VITE_BASE_URL;
+
 export async function fetchBoards({ category, search } = {}) {
   const params = new URLSearchParams();
-  if (category && category !== "All") params.append("category", category);
+  if (category && category !== "All" && category !== "Recent")
+    params.append("category", category);
   if (search) params.append("search", search);
+
   const res = await fetch(`${BASEURL}/boards?${params}`);
-  return res.json();
+  const boards = await res.json();
+
+  if (category === "Recent") {
+    const recentBoards = boards
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 6);
+
+    return recentBoards;
+  }
+
+  return boards;
 }
 
 export async function createBoard(data) {
-  console.log(data,`${BASEURL}/boards/`)
+  console.log(data, `${BASEURL}/boards/`);
   const res = await fetch(`${BASEURL}/boards/`, {
     method: "POST",
     headers: {

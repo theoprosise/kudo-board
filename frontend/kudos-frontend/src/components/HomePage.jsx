@@ -8,7 +8,7 @@ import BoardGrid from "./BoardGrid";
 import NewBoardForm from "./NewBoardForm";
 import "./HomePage.css";
 
-const categories = ["All", "Celebration", "Thank You", "Inspiration"];
+const categories = ["All", "Recent", "Celebration", "Thank You", "Inspiration"];
 
 export default function HomePage() {
   const [boards, setBoards] = useState([]);
@@ -42,12 +42,20 @@ export default function HomePage() {
         <section className="banner">Board Gallery Section</section>
 
         <SearchBar onSearch={setSearch} />
-        <CategoryFilter
-          selected={category}
-          categories={categories}
-          onChange={setCategory}
-        />
-        <button className="open-create-new-board" onClick={() => setOpenNew(true)}>Create New Board</button>
+        <h3 className="sort-title">Sort Boards:</h3>
+        <div className="wrap-button-cat">
+          <CategoryFilter
+            selected={category}
+            categories={categories}
+            onChange={setCategory}
+          />
+          <button
+            className="open-create-new-board"
+            onClick={() => setOpenNew(true)}
+          >
+            Create New Board
+          </button>
+        </div>
         {open && (
           <NewBoardForm
             onCreate={handleCreate}

@@ -1,7 +1,7 @@
 :root {
   --bg: #fff;
   --text: #111;
-  --card-bg: #f9f9f9;
+  --card-bg: lightgrey;
   --modal-bg: darkgrey;
 }
 [data-theme="dark"] {
