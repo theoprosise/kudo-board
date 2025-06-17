@@ -1,5 +1,4 @@
 const BASEURL = import.meta.env.VITE_BASE_URL;
-console.log(BASEURL);
 export async function fetchBoards({ category, search } = {}) {
   const params = new URLSearchParams();
   if (category && category !== "All") params.append("category", category);
@@ -9,6 +8,7 @@ export async function fetchBoards({ category, search } = {}) {
 }
 
 export async function createBoard(data) {
+  console.log(data,`${BASEURL}/boards/`)
   const res = await fetch(`${BASEURL}/boards/`, {
     method: "POST",
     headers: {
