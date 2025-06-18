@@ -11,7 +11,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CardGrid from "./CardGrid";
 import NewCardForm from "./NewCardForm";
-import "./BoardPage.css"
+import "./BoardPage.css";
 
 export default function BoardPage() {
   const { boardId } = useParams();
@@ -54,8 +54,13 @@ export default function BoardPage() {
   return (
     <>
       <Header />
-      <button onClick={() => setOpenModal(true)}>Create New</button>
-      <main>
+      <main className="board-page-content">
+        <div className="new-card-btn-wrap">
+          <button className="new-card-btn" onClick={() => setOpenModal(true)}>
+            Create New Card
+          </button>
+        </div>
+
         {openModal && (
           <div className="modal-backdrop">
             <div className="modal">

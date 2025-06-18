@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import "./BoardGrid.css";
 export default function BoardGrid({ boards, onDelete }) {
-  const randomInt = Math.floor(Math.random() * 9) + 1;
-
   return (
     <div className="grid boards">
       {boards.map((b) => {

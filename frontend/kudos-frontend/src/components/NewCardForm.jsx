@@ -17,24 +17,26 @@ export default function NewCardForm({ onCreate, onClose }) {
 
   return (
     <form onSubmit={submit} className="new-card-form">
-      <textarea
-        required
-        placeholder="Message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <GifPicker selected={gif} onSelect={setGif} />
-      <input
-        placeholder="Author (Optional)"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-      <button type="submit" disabled={!gif}>
-        Create Card
-      </button>
-      <button className="close" onClick={onClose}>
-        CLOSE
-      </button>
+      <div className="new-card-content">
+        <textarea
+          required
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <GifPicker selected={gif} onSelect={setGif} />
+        <input
+          placeholder="Author (Optional)"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+        <button type="submit" disabled={!gif}>
+          Create Card
+        </button>
+        <button className="close" onClick={onClose}>
+          CLOSE
+        </button>
+      </div>
     </form>
   );
 }
