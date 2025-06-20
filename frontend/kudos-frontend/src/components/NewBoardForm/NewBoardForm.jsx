@@ -6,6 +6,9 @@ export default function NewBoardForm({ onCreate, onClose }) {
   const [category, setCategory] = useState("");
   const [owner, setOwner] = useState("");
 
+  // Allow for simplicity in changing options in the future
+  const categoryOptions = ["Celebration", "Thank You", "Inspiration"];
+
   const submit = (e) => {
     e.preventDefault();
     onCreate({ title, category, owner });
@@ -14,6 +17,7 @@ export default function NewBoardForm({ onCreate, onClose }) {
     setOwner("");
   };
 
+  // Modal with form for creation of a a new board
   return (
     <div className="modal-backdrop">
       <div className="modal">
@@ -31,9 +35,14 @@ export default function NewBoardForm({ onCreate, onClose }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="Celebration">Celebration</option>
-            <option value="Thank You">Thank You</option>
-            <option value="Inspiration">Inspiration</option>
+            <option value="" disabled>
+              Select category
+            </option>
+            {categoryOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
           <input
             placeholder="Author (Optional)"

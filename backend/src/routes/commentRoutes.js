@@ -1,10 +1,12 @@
 const express = require("express");
+
 const {
   getCommentsForCard,
-  createCommentForCard
+  createCommentForCard,
 } = require("../controllers/commentController");
 
-const router = express.Router({mergeParams: true});
+// Allow access to cardId from parent route
+const router = express.Router({ mergeParams: true });
 
 router.get("/", getCommentsForCard);
 router.post("/", createCommentForCard);

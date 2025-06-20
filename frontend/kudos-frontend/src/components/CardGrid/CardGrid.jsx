@@ -1,4 +1,5 @@
-import CardItem from "./CardItem";
+import CardItem from "../CardItem/CardItem";
+
 export default function CardGrid({
   cards,
   upvote,

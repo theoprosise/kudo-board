@@ -2,6 +2,7 @@ const { PrismaClient } = require("../generated/prisma");
 
 const prisma = new PrismaClient();
 
+// Fetch boards optionally filtered by category and title search
 exports.getBoards = async (req, res) => {
   const { category, search } = req.query;
   const where = {
@@ -17,6 +18,7 @@ exports.getBoards = async (req, res) => {
   res.json(boards);
 };
 
+// Fetch a single board by ID, including its cards
 exports.getBoardById = async (req, res) => {
   const id = Number(req.params.id);
   const board = await prisma.board.findUnique({
@@ -38,6 +40,7 @@ exports.createBoard = async (req, res) => {
   res.status(201).json(board);
 };
 
+// Delete a board and its children cards and comments
 exports.deleteBoard = async (req, res) => {
   const id = Number(req.params.id);
   await prisma.board.delete({

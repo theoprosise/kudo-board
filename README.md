@@ -41,7 +41,7 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
   - [ ] Boards with a title containing the search query in the text input field are displayed in a grid view when the user:
     - [ ] Presses the Enter key
     - [ ] Clicks the Submit/Search button 
-  - [ ] User can delete all text from the text input field. 
+  - [ ] User can delete all text from the text input field.
   - [ ] When all text is cleared from the text input field, all boards are displayed in a grid view
 - [ ] **View Board** 
   - [ ] Users can click on a board in the grid view to navigate to a new page containing that board's details.

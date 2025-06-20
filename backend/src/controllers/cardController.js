@@ -2,6 +2,7 @@ const { PrismaClient } = require("../generated/prisma");
 
 const prisma = new PrismaClient();
 
+// Get all cards for a specific board, ordered by pin and creation time
 exports.getCardsForBoard = async (req, res) => {
   const boardId = Number(req.params.boardId);
   const cards = await prisma.card.findMany({
@@ -25,6 +26,7 @@ exports.createCardForBoard = async (req, res) => {
   res.status(201).json(card);
 };
 
+// Increment vote count of a card
 exports.upvoteCard = async (req, res) => {
   const id = Number(req.params.id);
   const card = await prisma.card.update({
@@ -33,6 +35,7 @@ exports.upvoteCard = async (req, res) => {
   });
   res.json(card);
 };
+
 exports.pinCard = async (req, res) => {
   const id = Number(req.params.id);
   const existing = await prisma.card.findUnique({ where: { card_id: id } });
@@ -46,6 +49,7 @@ exports.pinCard = async (req, res) => {
   res.json(updated);
 };
 
+// Delete a card and its comments
 exports.deleteCard = async (req, res) => {
   const id = Number(req.params.id);
   await prisma.card.delete({

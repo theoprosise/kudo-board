@@ -1,55 +1,74 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import {
   fetchCards,
   createCard,
   upvoteCard,
   pinCard,
   deleteCard,
-} from "../api";
-import Header from "./Header";
-import Footer from "./Footer";
-import CardGrid from "./CardGrid";
-import NewCardForm from "./NewCardForm";
+} from "../../api";
+
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import CardGrid from "../CardGrid/CardGrid";
+import NewCardForm from "../NewCardForm/NewCardForm";
+
 import "./BoardPage.css";
 
 export default function BoardPage() {
   const { boardId } = useParams();
   const [cards, setCards] = useState([]);
+  // Modal state for creating a new card
   const [openModal, setOpenModal] = useState(false);
 
-  const load = async () => {
+  // Remove unnecessary rerenders with memoization of functions
+  const load = useCallback(async () => {
     const data = await fetchCards(boardId);
     setCards(data);
-  };
+  }, [boardId]);
+
+  // Initial load or boardId change
   useEffect(() => {
     load();
   }, [boardId]);
 
-  const handlers = {
-    upvote: async (id) => {
+  // Create functions for card specific actions to be used as parameters
+  const upvote = useCallback(
+    async (id) => {
       await upvoteCard(boardId, id);
       load();
     },
-    pin: async (id) => {
+    [boardId, load]
+  );
+
+  const pin = useCallback(
+    async (id) => {
       await pinCard(boardId, id);
       load();
     },
+    [boardId, load]
+  );
 
-    delete: async (id) => {
+  const handleDelete = useCallback(
+    async (id) => {
       await deleteCard(boardId, id);
       load();
     },
+    [boardId, load]
+  );
 
-    commentAdded: async () => {
-      load();
-    },
+  const commentAdded = useCallback(async () => {
+    load();
+  }, [load]);
 
-    addCard: async (cardData) => {
+  const addCard = useCallback(
+    async (cardData) => {
       await createCard(boardId, cardData);
       load();
     },
-  };
+    [boardId, load]
+  );
 
   return (
     <>
@@ -65,13 +84,19 @@ export default function BoardPage() {
           <div className="modal-backdrop">
             <div className="modal">
               <NewCardForm
-                onCreate={handlers.addCard}
+                onCreate={addCard}
                 onClose={() => setOpenModal(false)}
               />
             </div>
           </div>
         )}
-        <CardGrid cards={cards} {...handlers} />
+        <CardGrid
+          cards={cards}
+          upvote={upvote}
+          pin={pin}
+          delete={handleDelete}
+          commentAdded={commentAdded}
+        />
       </main>
       <Footer />
     </>

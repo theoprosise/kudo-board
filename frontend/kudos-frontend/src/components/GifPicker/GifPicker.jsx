@@ -7,6 +7,7 @@ export default function GifFetcher({ selected, onSelect }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
+  // Search for GIFs via GIPHY API
   const search = async (e) => {
     e.preventDefault();
     const res = await fetch(
@@ -26,8 +27,11 @@ export default function GifFetcher({ selected, onSelect }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for GIF"
         />
-        <button type="button" onClick={search}>Search</button>
+        <button type="button" onClick={search}>
+          Search
+        </button>
       </div>
+      {/* When user selects a GIF use it for the card */}
       <div className="grid gif-results">
         {results.map((url) => (
           <img

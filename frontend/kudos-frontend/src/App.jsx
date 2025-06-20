@@ -1,19 +1,21 @@
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import HomePage from "./components/HomePage"
-import BoardPage from "./components/BoardPage"
-import {ThemeProvider} from './contexts/ThemeContext';
+import HomePage from "./components/HomePage/HomePage";
+import BoardPage from "./components/BoardPage/BoardPage";
+// Custom context for dark/light mode
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 function App() {
   return (
-    <ThemeProvider> 
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/boards/:boardId" element={<BoardPage />} />
-      </Routes>
-    </Router>
+    // Wrap the app in ThemeProvider to make dark mode context available globally
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/boards/:boardId" element={<BoardPage />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }

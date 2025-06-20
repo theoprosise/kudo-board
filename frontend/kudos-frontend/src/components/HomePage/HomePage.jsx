@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { fetchBoards, createBoard, deleteBoard } from "../api";
-import Header from "./Header";
-import Footer from "./Footer";
-import SearchBar from "./SearchBar";
-import CategoryFilter from "./CategoryFilter";
-import BoardGrid from "./BoardGrid";
-import NewBoardForm from "./NewBoardForm";
+import React, { useState, useEffect, useCallback } from "react";
+import { fetchBoards, createBoard, deleteBoard } from "../../api";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import SearchBar from "../SearchBar/SearchBar";
+import CategoryFilter from "../CategoryFilter/CategoryFilter";
+import BoardGrid from "../BoardGrid/BoardGrid";
+import NewBoardForm from "../NewBoardForm/NewBoardForm";
 import "./HomePage.css";
 
 const categories = ["All", "Recent", "Celebration", "Thank You", "Inspiration"];
@@ -16,24 +16,31 @@ export default function HomePage() {
   const [category, setCategory] = useState("All");
   const [open, setOpenNew] = useState(false);
 
-  const load = async () => {
+  // Prevent functions from unnecessary rerenders with useCallback
+  const load = useCallback(async () => {
     const data = await fetchBoards({ category, search });
     setBoards(data);
-  };
+  }, [category, search]);
 
   useEffect(() => {
     load();
   }, [category, search]);
 
-  const handleCreate = async (b) => {
-    await createBoard(b);
-    load();
-  };
+  const handleCreate = useCallback(
+    async (b) => {
+      await createBoard(b);
+      load();
+    },
+    [load]
+  );
 
-  const handleDelete = async (id) => {
-    await deleteBoard(id);
-    load();
-  };
+  const handleDelete = useCallback(
+    async (id) => {
+      await deleteBoard(id);
+      load();
+    },
+    [load]
+  );
 
   return (
     <>

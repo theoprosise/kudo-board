@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import CommentModal from "./CommentModal";
-import "./CardItem.css";
+import CommentModal from "../CommentModal/CommentModal";
+
+import "../CardItem/CardItem.css";
+
 export default function CardItem({
   card,
   onUpvote,
@@ -18,6 +20,7 @@ export default function CardItem({
         </div>
 
         <h3>{card.message}</h3>
+
         <div className="card-actions">
           <button onClick={onUpvote}>Upvote {card.votes}</button>
           <button onClick={onPin}>
@@ -26,6 +29,7 @@ export default function CardItem({
           <button onClick={onDelete}>🗑️</button>
           <button onClick={() => setOpen(true)}>Comments</button>
         </div>
+
         {open && (
           <CommentModal
             card={card}

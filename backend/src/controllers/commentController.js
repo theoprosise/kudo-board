@@ -19,7 +19,6 @@ exports.getCommentsForCard = async (req, res) => {
     });
     res.json(comments);
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -40,11 +39,10 @@ exports.createCommentForCard = async (req, res) => {
       return res.status(404).json({ error: "card not on this board" });
     }
     const comment = await prisma.comment.create({
-      data: {message,author,cardId}
+      data: { message, author, cardId },
     });
     res.status(201).json(comment);
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

@@ -1,6 +1,6 @@
 // components/NewCardForm.jsx
 import React, { useState } from "react";
-import GifPicker from "./GifPicker";
+import GifPicker from "../GifPicker/GifPicker";
 
 export default function NewCardForm({ onCreate, onClose }) {
   const [message, setMessage] = useState("");
@@ -15,6 +15,7 @@ export default function NewCardForm({ onCreate, onClose }) {
     setAuthor("");
   };
 
+  // Modal with form for creation of new card
   return (
     <form onSubmit={submit} className="new-card-form">
       <div className="new-card-content">

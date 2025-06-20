@@ -4,6 +4,7 @@
   --card-bg: lightgrey;
   --modal-bg: darkgrey;
 }
+
 [data-theme="dark"] {
   --bg: #222831;
   --text: #eee;
@@ -45,11 +46,11 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .modal {
   width: 60%;
   max-width: 500px;

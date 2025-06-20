@@ -6,6 +6,7 @@ export const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Load theme preference from local storage on mount
   useEffect(() => {
     const stored = localStorage.getItem("darkMode") === "true";
     setDarkMode(stored);
@@ -19,6 +20,7 @@ export function ThemeProvider({ children }) {
     );
   }, [darkMode]);
 
+  // Function to switch between themes
   const toggle = () => setDarkMode((dm) => !dm);
 
   return (

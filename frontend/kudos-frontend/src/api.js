@@ -9,6 +9,7 @@ export async function fetchBoards({ category, search } = {}) {
   const res = await fetch(`${BASEURL}/boards?${params}`);
   const boards = await res.json();
 
+  // Apply client-side recent sorting if category is "recent" - top 6 only
   if (category === "Recent") {
     const recentBoards = boards
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -21,7 +22,6 @@ export async function fetchBoards({ category, search } = {}) {
 }
 
 export async function createBoard(data) {
-  console.log(data, `${BASEURL}/boards/`);
   const res = await fetch(`${BASEURL}/boards/`, {
     method: "POST",
     headers: {
@@ -69,6 +69,7 @@ export async function upvoteCard(boardId, cardId) {
   }).then((r) => r.json());
 }
 
+// Toggle pin state for a specific card
 export async function pinCard(boardId, cardId) {
   return await fetch(`${BASEURL}/boards/${boardId}/cards/${cardId}/pin`, {
     method: "PATCH",

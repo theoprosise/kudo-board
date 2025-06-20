@@ -1,19 +1,21 @@
 .banner {
   text-align: center;
+  padding: 10px;
+  background-color: var(--card-bg);
 }
 .open-create-new-board {
   display: block;
   margin: 0 auto;
   text-align: center;
 }
-.main-content{
+.main-content {
   text-align: center;
 }
 
-.wrap-button-cat{
+.wrap-button-cat {
   padding: 10px;
 }
 
-.sort-title{
+.sort-title {
   margin-bottom: 0px;
 }

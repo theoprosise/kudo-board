@@ -1,6 +1,6 @@
 // components/CategoryFilter.jsx
 import React from "react";
-import "./CategoryFilter.css"
+import "./CategoryFilter.css";
 
 export default function CategoryFilter({ categories, selected, onChange }) {
   return (

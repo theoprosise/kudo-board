@@ -1,21 +1,24 @@
 // components/SearchBar.jsx
 import React, { useState } from "react";
-import "./SearchBar.css"
+import "./SearchBar.css";
 
 export default function SearchBar({ onSearch }) {
-  const [q, setQ] = useState("");
+  const [query, setQuery] = useState("");
+
   const submit = (e) => {
     e.preventDefault();
-    onSearch(q);
+    onSearch(query);
   };
+
   const clear = () => {
-    setQ(""), onSearch("");
+    setQuery(""), onSearch("");
   };
+
   return (
     <form className="search-form" onSubmit={submit}>
       <input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Search Boards..."
       />
       <button type="submit">Search</button>
